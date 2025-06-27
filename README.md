@@ -46,3 +46,4 @@ I developed a robust, automated file processing and tracking system using Python
 ---
 
 **This solution demonstrates how automation, security, and user-centric design can transform complex file management challenges into efficient, transparent, and scalable processes.**
+**Note: Processing of files are excluded from this repo since they have sensitive information.**
