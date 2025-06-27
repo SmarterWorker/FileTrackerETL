@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block meta %}
+<meta http-equiv="refresh" content="300">
+{% endblock meta %}
+{% block content %}
+<div>
+  <h3>{{ title }}</h3>
+</div>
+<div>
+  <h6> {{ head.file_typeID }} {{ head.file_name }} total {{ head.Entity }} </h6>
+</div>
+
+{% if ( head.Entity == 'FCA')  %}
+{{ head.Pyld_MsgRptIdr }}
+<a href="{{ url_for('transreporting.exportfca', Pyld = head.Pyld_MsgRptIdr )  }}" class="btn btn-dark btn-sm" role="button">Export</a></h6>
+</div>
+{% else  %}
+{{ head.file_name }}
+<a href="{{ url_for('transreporting.exportafm', Pyld = head.file_name )  }}" class="btn btn-dark btn-sm" role="button">Export</a>
+</h6>
+</div>
+{% endif %}
+
+
+<table class="table table-striped table-hover">
+  <thead class="table-dark">
+    <tr>
+      <!-- <th data-field="file_name">File Name</th> -->
+      <!-- <th data-field="file_typeID">Type </th> -->
+      <!-- <th data-field="Pyld_MsgRptIdr">Pyld</th>
+    <th data-field="AppHdr_MsgRptIdr">AppHdr </th> -->
+      <!-- <th data-field="Sts">Sts </th> -->
+      <th data-field="VldtnRule_id">VldtnRule_id </th>
+      <th data-field="VldtnRule_Desc">VldtnRule_Description </th>
+      <th data-field="file_name">OrgnlRcrdId </th>
+      <th data-field="last_write_time">LastWrite_Datetime</th>
+
+    </tr>
+  </thead>
+
+  {% for d in data %}
+  <tr>
+    <!-- <td style="width: 9%;">{{ d.file_name}}</td> -->
+    <!-- <td style="width: 9%;">{{ d.file_typeID}}</td> -->
+    <!-- <td style="width: 9%;">{{ d.Pyld_MsgRptIdr}}</td>
+        <td style="width: 9%;">{{ d.AppHdr_MsgRptIdr}}</td> -->
+    <!-- <td style="width: 9%;">{{ d.Sts}}</td> -->
+    <td style="width: 9%;">{{ d.VldtnRule_id}}</td>
+    <td style="width: 9%;">{{ d.VldtnRule_Desc}}</td>
+    <td style="width: 9%;">{{ d.OrgnlRcrdId}}</td>
+    <td style="width: 9%;">{{ d.last_write_time}}</td>
+
+  </tr>
+  {% endfor %}
+
+</table>
+
+
+{% endblock %}

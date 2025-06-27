@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block meta %}
+<meta http-equiv="refresh" content="300">
+{% endblock meta %}
+{% block js %}
+<link rel="shortcut icon" type="image/jpg" href="{{ url_for('static', filename='images/icon.png') }}"/>
+{% endblock js %}
+{% block content %}
+<div><h2>{{ title }} </h2> </div>
+<div> <h5> {{ data[0].file_name }}</h5>  </div>
+    {% if ( data[0].fhashcount == 1 )  %}
+      <h5 class="alert alert-success" role="alert">There are no differences between the files!</h5>
+      {% else  %}
+      <h5 class="alert alert-danger" role="alert">There is a difference between one or more file, the file hash's are different!</h5>
+    {% endif %}
+
+<table class="table  table-striped table-hover">
+    <thead class="table-dark">
+<tr>
+    <th data-field="file_name">Name and hash </th>
+    <th data-field="record_count">Record count </th>
+    <th data-field="file_status_id">Status </th>
+    <th data-field="notes">Notes_added </th>
+    <th data-field="created_at">db_entry_created </th>
+    <th data-field="last_write_time">last_write_time </th>
+    <th data-field="file_ext">Ext </th>
+    <th data-field="size_kb">Size (kb)</th>
+</tr></thead>
+
+    {% for d in data %}
+    <tr>
+        <td style="width: 9%;">{{ d.folder_name }}\{{ d.file_name }} {{ d.file_hash }}</td>
+        <td style="width: 9%;">{{ d.record_count }}</td>
+        <td style="width: 9%;">{{ d.file_status_id }}</td>
+        <td style="width: 9%;">{{ d.notes }}</td>
+        <td style="width: 9%;">{{ d.created_at }}</td>
+        <td style="width: 9%;">{{ d.last_write_time }}</td>
+        <td style="width: 9%;">{{ d.file_ext }}</td>
+        <td style="width: 9%;">{{ d.size_kb }}</td>
+    
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

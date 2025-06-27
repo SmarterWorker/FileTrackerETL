@@ -1,0 +1,94 @@
+/* Method selector */
+body{
+  font-size: larger;
+  font-weight:lighter;
+  font-style:oblique;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
+  color: rgb(82, 81, 79);
+}
+/* Class selector */
+.title {
+  color: orange;
+
+}
+.title:hover {
+
+  color: red;
+
+}
+
+.subtitle {
+  color: rgb(188, 143, 229);
+}
+/* ID selector */
+#about-me{
+
+  color: aqua;
+
+}
+h1 {
+  font-family:cursive;
+}
+
+tr:nth-child(even){
+  background-color: rgb(233, 233, 241);
+}
+th {
+  background-color: black;
+  color: whitesmoke;
+}
+.link:link{
+  color: green;
+}
+.link:visited{
+  color: goldenrod;
+}
+/* Sibling  */
+h2 + h3:hover {
+  color: red;
+}
+
+/* ~ follow and in the same parent */
+
+textarea ~ button {
+
+  color:purple;
+}
+
+/* > every single child element of an element*/
+
+ul > li {
+  color: blue;
+}
+
+/* decendants  */
+
+ul li {
+
+  color:green;
+}
+
+/* attribute selectors select certain elements  [attr=value]*/
+h4[class=selector]{
+
+  color:lightcoral
+}
+
+/* ^= begains with $=ends with *= anywhere, bit like regex  */
+img[src^="/static/images/"]{
+  box-shadow: lightgreen;
+  border: 10px solid black;
+  size: 640px;
+}
+
+/* ~= space selector */
+
+h3[class~=article-selector]{
+  background-color: chartreuse;
+}
+
+/* |=  starts with*/
+h3[class|=selector]{
+  background-color: chocolate;
+}

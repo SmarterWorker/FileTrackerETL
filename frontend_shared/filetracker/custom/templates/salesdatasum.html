@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<meta http-equiv="refresh" content="10">
+
+{% endblock meta %}
+
+{% block js %}
+<link rel="shortcut icon" type="image/jpg" href="{{ url_for('static', filename='images/icon.png') }}" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
+
+{% endblock js %}
+
+
+{% block content %}
+<h2>Custom - Example </h2>
+
+{% for mesg in get_flashed_messages() %}
+<h3>{{ mesg }}</h3>
+{% endfor %}
+<!--  File Types -->
+<br>
+<div class="row">
+    <div class="col-5">
+        <table class="table table-striped table-hover">
+            <h3> Sales revenue, cost and profit by region.</h3>
+            <thead class="table-dark">
+                <tr>
+                    <th data-field="ROW">id</th>
+                    <th data-field="REG">region</th>
+                    <th data-field="REV">revenue</th>
+                    <th data-field="COST">cost</th>
+                    <th data-field="PROFIT">profit</th>
+                </tr>
+            </thead>
+            {% for itm in data %}
+            <tr class="table-active">
+                <td>{{ itm.RowN }} </td>
+                <td>{{ itm.REGION }}</td>
+                <td>{{ "£{:,.0f}".format(itm.REVENUE) }}</td>
+                <td> {{ "£{:,.0f}".format(itm.COST) }}</td>
+                <td>{{ "£{:,.0f}".format(itm.PROFIT) }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+    <div class="col-7">
+        <br>
+        <canvas id="barchart" width="900" height="400"></canvas>
+        <script>
+            var ctx = document.getElementById('barchart').getContext('2d');
+        var lineChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ lblREG | safe }},
+                datasets: [{
+                    label: 'Revenue',
+                    data: {{ valREG | safe }},
+                    fill: true,
+                    borderColor: "rgb(75, 192, 192)",
+                    linetension: 0.2,
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+        </script>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-5">
+        <table class="table table-striped table-hover">
+            <h3> Sales revenue, cost and profit by product.</h3>
+            <thead class="table-dark">
+                <tr>
+                    <th data-field="ROW">id</th>
+                    <th data-field="REG">product</th>
+                    <th data-field="REV">revenue</th>
+                    <th data-field="COST">cost</th>
+                    <th data-field="PROFIT">profit</th>
+                </tr>
+            </thead>
+            {% for itm in data2 %}
+            <tr class="table-active">
+                <td>{{ itm.RowN }} </td>
+                <td>{{ itm.PRODUCT }}</td>
+                <td>{{ "£{:,.0f}".format(itm.REVENUE) }}</td>
+                <td> {{ "£{:,.0f}".format(itm.COST) }}</td>
+                <td>{{ "£{:,.0f}".format(itm.PROFIT) }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+    <div class="col-7">
+        <br>
+        <canvas id="piechart" width="900" height="400"></canvas>
+        <script>
+            var ctx = document.getElementById('piechart').getContext('2d');
+        var lineChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: {{ lblPROD | safe }},
+                datasets: [{
+                    label: 'Product',
+                    data: {{ valPROD | safe }},
+                    backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B", "#7FDBFF", "#B10DC9", "#FFDC00", "#001f3f", "#39CCCC", "#01FF70", "#85144b", "#F012BE", "#3D9970", "#111111", "#AAAAAA"],
+                }]
+            },
+            options: {
+                responsive: false
+            }
+        });
+        </script>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col6">
+
+    </div>
+    <div class="col6">
+        <br>
+        <h1></h1>
+    </div>
+
+</div>
+
+
+{% endblock %}

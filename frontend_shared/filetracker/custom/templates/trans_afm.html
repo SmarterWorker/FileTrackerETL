@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block meta %}
+<meta http-equiv="refresh" content="10">
+{% endblock meta %}
+<div>
+    {% block content %}
+    <h3>{{ title }} {{ data.total  }}</h3>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th data-field="file_name">Name</th>
+                <!-- <th data-field="file_typeID">Type</th> -->
+                <th data-field="TtlNbOfRcrds">Total</th>
+                <th data-field="DtldStsACPT">ACPT</th>
+                <th data-field="DtldStsPNDG">PNDG</th>
+                <th data-field="DtldStsRJCT">RJCT</th>
+                <th data-field="MsgSts">MsgSts</th>
+                <th data-field="last_write_time">LastWrite_Datetime</th>
+                <th data-field="ref_MsgRptIdr">ref_MsgRptIdr</th>
+            </tr>
+        </thead>
+        {% for d in data %}
+
+        {% if ( d.MsgSts == 'ACPT')  %}
+        <tr class="table-success">
+            {% elif ( d.MsgSts == 'RJCT' ) %}
+        <tr class="table-danger">
+            {% elif ( d.DtldStsRJCT > 0 ) %}
+        <tr class="table-danger">
+            {% else  %}
+        <tr class="table-active">
+            {% endif %}
+
+            {% if d.DtldStsRJCT > 0   %}
+            <td><a href="{{ url_for('transreporting.rejects2', Pyld = d.file_name )  }}"> {{ d.file_name }}</a></td>
+            {% else %}
+            <td>{{ d.file_name }}</td>
+            {% endif %}
+            <td>{{ d.TtlNbOfRcrds }}</td>
+            <td>{{ d.DtldStsACPT }}</td>
+            <td>{{ d.DtldStsPNDG }}</td>
+            <td>{{ d.DtldStsRJCT }}</td>
+            <td>{{ d.MsgSts }}</td>
+            <td>{{ d.last_write_time }}</td>
+            <td>{{ d.ref_MsgRptIdr }}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+    {% endblock %}
+
+</div>

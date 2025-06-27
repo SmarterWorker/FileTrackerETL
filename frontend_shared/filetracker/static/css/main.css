@@ -1,0 +1,92 @@
+/* Learning */
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
+    
+}
+
+h1[class=main] {
+    color: brown;
+    font-weight: bolder;
+    font-size:3em;
+    display: block;
+}
+
+.title {
+    color: rgb(27, 90, 173);
+}
+
+.textbox {
+    
+    margin: 3%;
+}
+
+.container {
+    grid-template-columns: 40px 50px auto 50px 40px;
+    grid-template-rows: 25% 100px auto;
+  }
+
+  #service-image {
+
+    height: 500px;
+    width: 70% ;
+    background: url("/static/images/pexels-dom-j-310452.jpg");
+    /* rgba red green blue a (opacity) 0 none 1 = 100% */
+    background-color: rgba(13, 67, 121, 0.9);
+    background-repeat: no-repeat;
+    background-size: 70% 400px;
+    /* background-size: contain; */
+    /* background-size: cover; */
+
+  }
+
+  table.minimalistBlack {
+    border: 3px solid #000000;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+  }
+  table.minimalistBlack td, table.minimalistBlack th {
+    border: 1px solid #000000;
+    padding: 4px 4px;
+  }
+  table.minimalistBlack tbody td {
+    font-size: 10px;
+  }
+  table.minimalistBlack thead {
+    background: #CFCFCF;
+    background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+    background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+    background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+    border-bottom: 3px solid #000000;
+  }
+  table.minimalistBlack thead th {
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000;
+    text-align: left;
+  }
+  table.minimalistBlack tfoot {
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000;
+    border-top: 2px solid #000000;
+  }
+  table.minimalistBlack tfoot td {
+    font-size: 12px;
+  }
+
+  table.elenight thead th{
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  table.elenight tbody td{
+    font-size: 10px;
+    font-weight: bold;
+    color: rgb(103, 35, 117);
+    text-align: center;
+  }

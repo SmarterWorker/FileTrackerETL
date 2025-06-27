@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<meta http-equiv="refresh" content="300">
+
+{% endblock meta %}
+
+{% block js %}
+<link rel="shortcut icon" type="image/jpg" href="{{ url_for('static', filename='images/icon.png') }}"/>
+{% endblock js %}
+
+{% block content %}
+<h2>{{ title }} - Example </h2>
+<!--  File Types -->
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped table-hover">
+            <h4> File Type Config </h4>
+            <thead class="table-dark">
+                <tr>
+                    <th data-field="ft_cfg_ref">ft_cfg_ref</th>
+                    <th data-field="cfg_option">cfg_option</th>
+                    <th data-field="cfg_value">cfg_value</th>
+                </tr>
+            </thead>
+
+            {% for dfc in file %}
+            <tr class="table-active">
+                <td>{{ dfc.ft_cfg_ref }}</td>
+                <td>{{ dfc.cfg_option }}</td>
+                <td>{{ dfc.cfg_value }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+</div>
+<!--  File Configuation -->
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped table-hover">
+            <h4> File Types </h4>
+            <thead class="table-dark">
+                <tr>
+                    <th data-field="file_type_id">file_type_id</th>
+                    <th data-field="detailed_info">detailed_info</th>
+                    <th data-field="ft_cfg_ref">ft_cfg_ref</th>
+                    <th data-field="is_active">is_active</th>
+                </tr>
+            </thead>
+
+            {% for dft in types %}
+            <tr class="table-active">
+                <td>{{ dft.file_type_id }}</td>
+                <td>{{ dft.detailed_info }}</td>
+                <td>{{ dft.ft_cfg_ref }}</td>
+                <td>{{ dft.is_active }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+</div>
+<!--  File Status -->
+<div class="row">
+
+    <div class="col-12">
+        <table class="table table-striped table-hover">
+            <h4>File Status Config</h4>
+            <thead class="table-dark">
+                <tr>
+                    <th data-field="file_status_id">file_status_id</th>
+                    <th data-field="detailed_info">detailed_info</th>
+                    <th data-field="is_active">is_active</th>
+                    <th data-field="sort_order">sort_order</th>
+                    <th data-field="group_name">group_name</th>
+                    <th data-field="key_status">key_status</th>
+                </tr>
+            </thead>
+            {% for dst in status %}
+            <tr class="table-active">
+                <td>{{ dst.file_status_id }}</td>
+                <td>{{ dst.detailed_info }}</td>
+                <td>{{ dst.is_active }}</td>
+                <td>{{ dst.sort_order }}</td>
+                <td>{{ dst.group_name }}</td>
+                <td>{{ dst.key_status }}</td>
+            </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+<!--  FTP Config -->
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped table-hover">
+            <h4> FTP Config </h4>
+            <thead class="table-dark">
+                <tr>
+                    <th data-field="id">id</th>
+                    <th data-field="config_ref">config_ref</th>
+                    <th data-field="config_name">config_name</th>
+                    <th data-field="file_type_id">file_type_id</th>
+                    <th data-field="file_status_id">file_status_id</th>
+                    <th data-field="dest_folder">dest_folder</th>
+                    <th data-field="source_folder">source_folder</th>
+                    <th data-field="archive_locs">archive_locs</th>
+                    <th data-field="private_key">private_key</th>
+                    <th data-field="hostname">hostname</th>
+                </tr>
+            </thead>
+
+            {% for ftc in ftp %}
+            <tr class="table-active">
+                <td>{{ ftc.id }}</td>
+                <td>{{ ftc.config_ref }}</td>
+                <td>{{ ftc.config_name }}</td>
+                <td>{{ ftc.file_type_id }}</td>
+                <td>{{ ftc.file_status_id }}</td>
+                <td>{{ ftc.dest_folder }}</td>
+                <td>{{ ftc.source_folder }}</td>
+                <td>{{ ftc.archive_locs }}</td>
+                <td>{{ ftc.private_key }}</td>
+                <td>{{ ftc.hostname }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" type="image/jpg" href="{{ url_for('static', filename='images/icon.png') }}"/>
+  {% block meta %}
+  {% endblock meta %}
+    
+  {% block js %}
+  {% endblock js %}
+  <title>jQuery</title>
+</head>
+
+<body>
+  <div>
+    <a class="navbar-brand" href="{{ url_for('filestatus.home') }}">twFM</a>
+  </div>
+  {% block content %}  {% endblock content %}
+
+  {% block scr %}
+  {% endblock scr %}
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block meta %}
+<meta http-equiv="refresh" content="300">
+{% endblock meta %}
+{% block content %}
+<div class="container">
+  <h3>{{ title }}</h3>
+</div>
+<div>
+
+  <div class="container" >
+
+    {{ data }}
+
+    <a href="{{ url_for('errors.testinfo', info='Information Here')  }}" class="btn btn-dark btn-sm"
+    role="button">Export</a></h6>
+
+  </div>
+
+{% endblock %}

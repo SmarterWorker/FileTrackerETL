@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<meta http-equiv="refresh" content="10">
+{% endblock meta %}
+<div>
+{% block content %}
+<h3>{{ title }} {{ data.total }}</h3>
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th data-field="FT">FT</th>
+            <th data-field="group_id">Entity</th>
+            <th data-field="file_name">Name</th>
+            <!-- <th data-field="file_typeID">Type</th> -->
+            <th data-field="TtlNbOfRcrds">Total</th>
+            <th data-field="DtldStsACPT">ACPT</th>
+            <th data-field="DtldStsPNDG">PNDG</th>
+            <th data-field="DtldStsRJCT">RJCT</th>
+            <th data-field="SubStatus">Status</th>
+            <th data-field="last_write_time">LastWrite_Datetime</th>
+            <th data-field="AppHdr_MsgRptIdr">AppHdr_MsgRptIdr</th>
+            <th data-field="Pyld_MsgRptIdr">Pyld_MsgRptIdr</th>
+            <!-- <th data-field="sort_order">sort_order</th> -->
+
+        </tr>
+    </thead>
+    {% for d in data %}
+
+    {% if ( d.SubStatus == 'ACPT')  %}
+    <tr class="table-success">
+        {% elif ( d.SubStatus == 'RJCT' )  %}
+    <tr class="table-danger">
+        {% else  %}
+        <tr class="table-active">
+        {% endif %}
+        <td>{{ d.FT }}</td>
+        <td>{{ d.group_id }}</td>
+        <td>{{ d.file_name }}</td>
+        <!-- <td>{{ d.file_typeID  }}</td> -->
+        <td>{{ d.TtlNbOfRcrds }}</td>
+        <td>{{ d.DtldStsACPT }}</td>
+        <td>{{ d.DtldStsPNDG }}</td>
+        <td>{{ d.DtldStsRJCT }}</td>
+        <td>{{ d.SubStatus  }}</td>
+        <td style="width: 9%;">{{ d.last_write_time }}</td>
+        <td class="CellWithComment">{{ d.AppHdr_MsgRptIdr |truncate(30) }}
+        </td>
+        {% if d.SubStatus == 'RJCT'  %}
+        <td><a href="{{ url_for('transreporting.rejects', Pyld = d.Pyld_MsgRptIdr )  }}"> {{ d.Pyld_MsgRptIdr }}</a></td>
+        {% else %}
+        <td>{{ d.Pyld_MsgRptIdr }}</td>
+        {% endif %}
+
+    </tr>
+
+    {% endfor %}
+</table>
+{% endblock %}
+
+</div>

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<meta http-equiv="refresh" content="10">
+{% endblock meta %}
+{% block content %}
+<div class="row">
+    <h3>{{ title }} </h3>
+    <div class="col-6">
+        <table class="table table-striped table-hover">
+            <h4> AFM </h4>
+            <thead class="table-dark">
+                <tr>
+                    <th data-field="YR">Year</th>
+                    <th data-field="MTH">Month</th>
+                    <th data-field="TOTAL">Total</th>
+                    <th data-field="ACPT">ACPT</th>
+                    <th data-field="PNDG">PNDG</th>
+                    <th data-field="RJCT">RJCT</th>
+                </tr>
+            </thead>
+            {% for d in data_afm %}
+
+            <tr class="table-active">
+                <td>{{ d.YR }}</td>
+                <td>{{ d.MTH }}</td>
+                <td>{{ d.TOTAL }}</td>
+                <td>{{ d.ACPT }}</td>
+                <td>{{ d.PNDG }}</td>
+                <td>{{ d.RJCT }}</td>
+            </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+    <div class="col-6">
+        <table class="table table-striped table-hover">
+            <h4> FCA </h4>
+            <thead class="table-dark">
+                <tr>
+                    <th data-field="YR">Year</th>
+                    <th data-field="MTH">Month</th>
+                    <th data-field="ENTITY">ENTITY</th>
+                    <th data-field="SUBS">Subs</th>
+                    <th data-field="TOTAL">Total</th>
+                    <th data-field="ACPT">ACPT</th>
+                    <th data-field="PNDG">PNDG</th>
+                    <th data-field="RJCT">RJCT</th>
+                </tr>
+            </thead>
+            {{ data_fca.total }}
+            {% for a in data_fca %}
+            <tr class="table-active">
+                <td>{{ a.YR }}</td>
+                <td>{{ a.MTH }}</td>
+                <td>{{ a.ENTITY }}</td>
+                <td>{{ a.SUBS }}</td>
+                <td>{{ a.TOTAL }}</td>
+                <td>{{ a.ACPT }}</td>
+                <td>{{ a.PNDG }}</td>
+                <td>{{ a.RJCT }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}
